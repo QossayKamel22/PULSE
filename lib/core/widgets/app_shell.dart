@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../responsive/responsive_layout.dart';
 import '../theme/pulse_colors.dart';
 import '../theme/pulse_spacing.dart';

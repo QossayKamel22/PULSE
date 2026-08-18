@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../controllers/habits_controller.dart';
-import '../models/habit_model.dart';
 import '../models/completion_stats.dart';
 import '../../../core/theme/pulse_spacing.dart';
 import '../../../core/theme/pulse_colors.dart';

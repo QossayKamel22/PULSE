@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../../habits/controllers/habits_controller.dart';
 import '../../habits/widgets/habit_tile.dart';
 import '../../habits/widgets/add_habit_form.dart';
-import '../../auth/controllers/auth_controller.dart';
 import '../../../core/theme/pulse_spacing.dart';
 import '../../../core/theme/pulse_colors.dart';
 import '../../../core/widgets/pulse_ai_card.dart';
@@ -19,7 +18,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final habits = Get.find<HabitsController>();
-    final auth = Get.find<AuthController>();
 
     return Obx(() {
       final greeting = _greeting();

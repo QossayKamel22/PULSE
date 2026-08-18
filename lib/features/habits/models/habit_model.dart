@@ -59,7 +59,10 @@ class HabitModel {
         orElse: () => HabitFrequency.daily,
       ),
       reminderTime: reminder,
-      icon: IconData(map['icon'] as int? ?? Icons.check_circle_outline.codePoint, fontFamily: 'MaterialIcons'),
+      icon: map['icon'] is int
+          // ignore: non_const_argument_for_const_parameter
+          ? IconData(map['icon'] as int, fontFamily: 'MaterialIcons')
+          : Icons.check_circle_outline,
       createdAt: (map['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
       isActive: map['isActive'] as bool? ?? true,
     );
