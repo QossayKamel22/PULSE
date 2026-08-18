@@ -2,6 +2,10 @@
 
 **Build your rhythm.**
 
+<img width="1312" height="1199" alt="BBF49430-E3D6-4E84-AECC-857901B7F898" src="https://github.com/user-attachments/assets/cfaf0ea6-1dba-4eec-a4e4-e48d8bd741c9" />
+
+---
+
 A small, premium habit and daily-rhythm tracking app, built with Flutter and Firebase. Small app, premium execution — not a tutorial project, not a feature dump.
 
 ---
@@ -159,8 +163,23 @@ Covers streak/best-streak/completion-rate/rhythm-score math and `HabitModel` (de
 - Cloud Functions for server-side streak recompute
 - Smart habit recommendations
 
-## Future Improvements
+## Screenshots 
 
-- Offline-first Firestore caching tuning
-- Accessibility pass (dynamic type, screen reader labels)
-- CI (GitHub Actions) running `flutter analyze` + `flutter test` on PRs
+<img width="1536" height="1024" alt="57347B47-9328-4DED-870E-8830974D8E8C" src="https://github.com/user-attachments/assets/044a67ce-0b9b-4f20-b019-4eaa42a7b043" />
+
+---
+
+<img width="1536" height="1024" alt="1C3FC01B-3D67-45AC-BDD6-EBB4E306CABF" src="https://github.com/user-attachments/assets/3f4981df-2eaa-4484-abef-a364b31d3f31" />
+
+---
+
+<img width="1536" height="1024" alt="485742D3-484B-4AF0-8BAC-C56BC9A7775D" src="https://github.com/user-attachments/assets/b3791855-ed02-4c04-8940-632843b7d28e" />
+
+
+---
+
+
+
+
+
+
