@@ -2,17 +2,45 @@
 
 **Build your rhythm.**
 
-<img width="1312" height="1199" alt="BBF49430-E3D6-4E84-AECC-857901B7F898" src="https://github.com/user-attachments/assets/cfaf0ea6-1dba-4eec-a4e4-e48d8bd741c9" />
+<img width="1312" height="1199" alt="PULSE app banner" src="https://github.com/user-attachments/assets/cfaf0ea6-1dba-4eec-a4e4-e48d8bd741c9" />
 
----
+<p>
+  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20FCM-FFCA28?logo=firebase&logoColor=black" alt="Firebase">
+  <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20Android%20%7C%20macOS%20%7C%20Web-6E56CF" alt="Platforms">
+  <img src="https://img.shields.io/badge/License-MIT-informational" alt="License: MIT">
+</p>
 
 A small, premium habit and daily-rhythm tracking app, built with Flutter and Firebase. Small app, premium execution — not a tutorial project, not a feature dump.
 
 ---
 
+## Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Firestore Structure](#firestore-structure)
+- [Security Rules](#security-rules)
+- [Authentication](#authentication)
+- [Streak Calculation](#streak-calculation)
+- [Notifications](#notifications)
+- [Theme System](#theme-system)
+- [Responsive Design](#responsive-design)
+- [PULSE AI](#pulse-ai)
+- [Screenshots](#screenshots)
+- [Firebase Setup](#firebase-setup)
+- [Local Installation](#local-installation)
+- [Running on iOS / Android / macOS / Web](#running-on-ios--android--macos--web)
+- [Web Deployment](#web-deployment)
+- [Testing](#testing)
+- [Roadmap](#roadmap)
+- [License](#license)
+
 ## Overview
 
-PULSE helps you track a handful of daily habits, see your streaks, and understand your rhythm at a glance — on iOS, Android, macOS, and the web, from one Flutter codebase.
+PULSE helps you track a handful of daily habits, see your streaks, and understand your rhythm at a glance — on iOS, Android, macOS, and the web, from one Flutter codebase. It's built the way a real product would be: a typed data model, security rules that actually restrict access, unit-tested streak math, and a UI that adapts from a phone in your pocket to a widescreen desktop window, without forking the logic underneath.
 
 ## Features
 
@@ -75,15 +103,15 @@ See [`firestore.rules`](./firestore.rules). Users may only read/write their own 
 
 ## Authentication
 
-Email/password only in this MVP (no Google Sign-In yet — see Roadmap). Sessions persist across app restarts via Firebase's own persistence; auth state changes drive routing automatically.
+Email/password only in this MVP (no Google Sign-In yet — see [Roadmap](#roadmap)). Sessions persist across app restarts via Firebase's own persistence; auth state changes drive routing automatically.
 
 ## Streak Calculation
 
-Implemented in `lib/features/habits/models/completion_stats.dart` as pure, framework-free Dart — no Firestore dependency — so it's fully unit tested in `test/unit/streak_test.dart`. Covers current streak, best streak, 7-day completion rate, and daily rhythm score.
+Implemented in [`lib/features/habits/models/completion_stats.dart`](./lib/features/habits/models/completion_stats.dart) as pure, framework-free Dart — no Firestore dependency — so it's fully unit tested in [`test/unit/streak_test.dart`](./test/unit/streak_test.dart). Covers current streak, best streak, 7-day completion rate, and daily rhythm score.
 
 ## Notifications
 
-`services/notifications/notification_service.dart` wraps Firebase Cloud Messaging (remote) and `flutter_local_notifications` (local, scheduled from each habit's own reminder time). PULSE does not send unsolicited notifications beyond what a habit's reminder is set to.
+[`services/notifications/notification_service.dart`](./lib/services/notifications/notification_service.dart) wraps Firebase Cloud Messaging (remote) and `flutter_local_notifications` (local, scheduled from each habit's own reminder time). PULSE does not send unsolicited notifications beyond what a habit's reminder is set to.
 
 ## Theme System
 
@@ -93,13 +121,23 @@ Implemented in `lib/features/habits/models/completion_stats.dart` as pure, frame
 
 `core/responsive/` defines breakpoints (mobile < 600, tablet < 1024, desktop < 1440, large desktop beyond) and a `ResponsiveLayout` widget used per-screen. Mobile gets a bottom nav and single-column layout; desktop/web get a persistent sidebar and multi-column dashboards, constrained to a comfortable max content width. The same business logic and Firebase-backed controllers drive every layout — there is no duplicated app underneath.
 
-## PULSE AI (Visual Placeholder)
+## PULSE AI
 
-`core/widgets/pulse_ai_card.dart` renders a small card with static, locally-rotated mock copy (e.g. *"You're most consistent on weekdays."*). There is intentionally **no** OpenAI/Claude/Gemini/any LLM integration in this version — the component exists so a real AI backend can be dropped in later without redesigning the UI.
+Every screen that would eventually carry real, LLM-backed insight already has a home for it: [`core/widgets/pulse_ai_card.dart`](./lib/core/widgets/pulse_ai_card.dart), a compact card styled to sit naturally in both the mobile feed and the desktop dashboard. In this version it surfaces short, locally-rotated observations — *"You're most consistent on weekdays."* — rather than a live model call.
+
+That's a deliberate sequencing choice, not a shortcut: the surface, the copy rhythm, and the layout contract are settled first, so that wiring in a real backend later — a Cloud Function that reads a user's `completions` history and returns a generated insight — is a data-source swap, not a UI rewrite. No OpenAI, Claude, Gemini, or any other LLM is called in this version; nothing here talks to a model or leaves the device.
 
 ## Screenshots
 
-_Add screenshots here once captured:_ Home / Habit Details / Insights / Profile in both Light and Dark mode, plus the macOS dashboard and desktop/tablet/mobile Web layouts.
+<img width="1536" height="1024" alt="PULSE screenshot 1" src="https://github.com/user-attachments/assets/044a67ce-0b9b-4f20-b019-4eaa42a7b043" />
+
+---
+
+<img width="1536" height="1024" alt="PULSE screenshot 2" src="https://github.com/user-attachments/assets/3f4981df-2eaa-4484-abef-a364b31d3f31" />
+
+---
+
+<img width="1536" height="1024" alt="PULSE screenshot 3" src="https://github.com/user-attachments/assets/b3791855-ed02-4c04-8940-632843b7d28e" />
 
 ## Firebase Setup
 
@@ -163,23 +201,8 @@ Covers streak/best-streak/completion-rate/rhythm-score math and `HabitModel` (de
 - Cloud Functions for server-side streak recompute
 - Smart habit recommendations
 
-## Screenshots 
+## License
 
-<img width="1536" height="1024" alt="57347B47-9328-4DED-870E-8830974D8E8C" src="https://github.com/user-attachments/assets/044a67ce-0b9b-4f20-b019-4eaa42a7b043" />
-
----
-
-<img width="1536" height="1024" alt="1C3FC01B-3D67-45AC-BDD6-EBB4E306CABF" src="https://github.com/user-attachments/assets/3f4981df-2eaa-4484-abef-a364b31d3f31" />
+MIT — see [`LICENSE`](./LICENSE) for the full text. © 2026 Qossay Kamel.
 
 ---
-
-<img width="1536" height="1024" alt="485742D3-484B-4AF0-8BAC-C56BC9A7775D" src="https://github.com/user-attachments/assets/b3791855-ed02-4c04-8940-632843b7d28e" />
-
-
----
-
-
-
-
-
-
