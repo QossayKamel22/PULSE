@@ -18,6 +18,7 @@ A small, premium habit and daily-rhythm tracking app, built with Flutter and Fir
 ## Contents
 
 - [Overview](#overview)
+- [Documentation](#documentation)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
@@ -36,11 +37,21 @@ A small, premium habit and daily-rhythm tracking app, built with Flutter and Fir
 - [Web Deployment](#web-deployment)
 - [Testing](#testing)
 - [Roadmap](#roadmap)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
 
 PULSE helps you track a handful of daily habits, see your streaks, and understand your rhythm at a glance — on iOS, Android, macOS, and the web, from one Flutter codebase. It's built the way a real product would be: a typed data model, security rules that actually restrict access, unit-tested streak math, and a UI that adapts from a phone in your pocket to a widescreen desktop window, without forking the logic underneath.
+
+## Documentation
+
+This README covers the essentials. For deeper detail, see:
+
+- [**SRS**](./docs/SRS.md) — the full functional and non-functional requirements, with a traceability table back to the code that implements each one.
+- [**Architecture**](./docs/ARCHITECTURE.md) — the layering rules, state management approach, and a walked-through data-flow example.
+- [**Roadmap**](./docs/ROADMAP.md) — planned work, sequenced by dependency rather than by date, plus what's explicitly out of scope for now.
+- [**Contributing**](./CONTRIBUTING.md) — setup, conventions, and what's expected before opening a PR.
 
 ## Features
 
@@ -200,6 +211,12 @@ Covers streak/best-streak/completion-rate/rhythm-score math and `HabitModel` (de
 - Deeper analytics
 - Cloud Functions for server-side streak recompute
 - Smart habit recommendations
+
+See [docs/ROADMAP.md](./docs/ROADMAP.md) for sequencing and rationale behind this list.
+
+## Contributing
+
+Setup, conventions (Firebase access through `services/`, styling through `core/theme/`), and what's expected before opening a PR are in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
