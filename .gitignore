@@ -1,0 +1,31 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/pubspec.lock
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+
+# Firebase — never commit real credentials
+lib/services/firebase/firebase_options.dart.local
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+firebase-debug.log
+.firebase/
+*.env
+.env*
+
+# Build outputs
+web/build/
+ios/Flutter/Flutter.podspec
